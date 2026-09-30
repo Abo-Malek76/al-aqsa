@@ -7,21 +7,97 @@ Prayer times from your mosque, a countdown to the next prayer and a prayer track
   - [Mawaqit](https://mawaqit.net) mosques, e.g. Skärholmen SIKF and Vårby Gård VISUK in Stockholm
   - Stockholms moské (Kapellgränd 10) has no public feed yet; use the islam.nu Stockholm timetable
 - **City timetables** from [islam.nu](https://islam.nu/bonetider/) for 60+ Swedish cities, including Stockholm and Växjö.
-- Launch from the Omarchy launcher (SUPER+SPACE → "Al-Aqsa") or run `al-aqsa`.
 - Follows your Omarchy theme live, or pick any Omarchy/built-in theme with `T`.
 
-## Install
+> [!NOTE]
+> **Made and tested on [Omarchy](https://omarchy.org).** Al-Aqsa was built on and for Omarchy, and
+> that's where it works best: it follows your Omarchy theme, adds a prayer widget to the Omarchy bar,
+> and saves power using Hyprland. The core app — prayer times, countdown, check-offs, calendar and
+> notifications — should work on any Linux terminal, and you're very welcome to run it without
+> Omarchy. The Omarchy-only parts simply switch themselves off. If you get it working somewhere
+> else, or hit a snag, feel free to open an issue or a pull request.
 
-Needs Python 3.11+ and a terminal with a [Nerd Font](https://www.nerdfonts.com/) (Omarchy ships one).
+## Installation guide
+
+### 1. What you need
+
+**On Omarchy:** nothing extra — everything is already there. Skip to step 2.
+
+**On other Linux systems:**
+
+- **Python 3.11 or newer** and **git**
+- A terminal using a **[Nerd Font](https://www.nerdfonts.com/)** (for the icons, checkboxes and the rounded calendar)
+- Optional, for the extras:
+  - `notify-send` (libnotify) and `pw-play` or `paplay` — prayer notifications and their sound
+  - a **systemd user session** — notifications while the app is closed
+  - `rsvg-convert` (librsvg) — the launcher icon
+  - `parec` (PipeWire/PulseAudio) — the *Music* visualizer
+
+| Distribution | Command |
+|---|---|
+| Arch | `sudo pacman -S --needed python git libnotify librsvg pipewire-pulse` |
+| Debian / Ubuntu | `sudo apt install python3 python3-venv git libnotify-bin librsvg2-bin pulseaudio-utils` |
+| Fedora | `sudo dnf install python3 git libnotify librsvg2-tools pulseaudio-utils` |
+
+### 2. Download and install
 
 ```sh
-git clone https://github.com/Abo-Malek76/al-aqsa.git
-cd al-aqsa
+git clone https://github.com/Abo-Malek76/al-aqsa.git ~/al-aqsa
+cd ~/al-aqsa
 ./install.sh
 ```
 
-Then open **Al-Aqsa** from your app launcher, or run `al-aqsa`. The first time, pick your mosque
-or city. On Omarchy it also adds the prayer widget to the bar and turns on prayer notifications.
+`install.sh` only touches your own user folders — no `sudo`. It creates a private Python
+environment inside the folder, the `al-aqsa` command (in `~/.local/bin`), a launcher entry and the
+icon. Keep the folder where it is; the app runs from it.
+
+### 3. First run
+
+1. Open **Al-Aqsa** from your app launcher (on Omarchy: `SUPER + SPACE` → *Al-Aqsa*), or run `al-aqsa`.
+2. Pick your mosque or city from the list, or search for one and press Enter.
+3. That's it. On Omarchy the prayer widget appears in the bar, and prayer notifications are on
+   (press `n` to mute them).
+
+If `al-aqsa` says *command not found*, add `~/.local/bin` to your `PATH` (Omarchy already has it).
+
+### What works where
+
+| Feature | Omarchy | Other Linux |
+|---|:---:|:---:|
+| Prayer times, countdown, check-offs, calendar, streaks | ✓ | ✓ |
+| Clock fonts, digit animations, scenes, themes | ✓ | ✓ (built-in themes) |
+| Prayer notifications with a chime | ✓ | ✓ with a systemd user session and `notify-send` |
+| Follows your desktop theme live | ✓ | — |
+| Bar widget and prayer panel | ✓ | — |
+| Pauses animations when the window is hidden | ✓ | Hyprland only |
+
+### Updating
+
+```sh
+cd ~/al-aqsa
+git pull
+./install.sh
+```
+
+### Uninstalling
+
+```sh
+cd ~/al-aqsa
+./uninstall.sh            # keeps your settings and prayer log
+./uninstall.sh --purge    # deletes them too
+```
+
+This removes the command, launcher entry, icon, background service and (on Omarchy) the bar widget.
+Then delete the folder.
+
+### Troubleshooting
+
+- **Boxes or question marks instead of icons** — your terminal isn't using a Nerd Font.
+- **No notifications** — check the background service: `systemctl --user status al-aqsa-notify`,
+  and test the sound and popup with `~/al-aqsa/.venv/bin/python -m alaqsa.notifier --test`.
+- **The bar widget doesn't show or doesn't update (Omarchy)** — `al-aqsa --omarchy-bar install`,
+  then `omarchy restart shell`.
+- **"Couldn't reach Mawaqit"** — you're offline; the app keeps using the last downloaded timetable.
 
 ## Keys
 
