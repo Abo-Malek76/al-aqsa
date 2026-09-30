@@ -1,0 +1,21 @@
+[project]
+name = "al-aqsa"
+version = "1.0.0"
+description = "Prayer times from your mosque, countdown and prayer tracker for the terminal"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["textual>=8", "hijridate>=2.5", "numpy>=1.26", "pillow>=10"]
+
+[project.scripts]
+al-aqsa = "alaqsa.app:main"
+al-aqsa-notify = "alaqsa.notifier:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["alaqsa"]
+
+[tool.setuptools.package-data]
+alaqsa = ["app.tcss", "assets/*.wav"]

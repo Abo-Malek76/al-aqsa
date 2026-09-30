@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14967f"/>
+      <stop offset="0.55" stop-color="#0c5d5a"/>
+      <stop offset="1" stop-color="#082a36"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#fff1b8"/>
+      <stop offset="1" stop-color="#f5b82e"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cfe9e4"/>
+    </linearGradient>
+    <mask id="crescent">
+      <rect width="512" height="512" fill="#fff"/>
+      <circle cx="318" cy="128" r="70" fill="#000"/>
+    </mask>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#bg)"/>
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="4"/>
+
+  <!-- crescent and star -->
+  <circle cx="284" cy="150" r="84" fill="#f5c451" opacity="0.35" filter="url(#glow)" mask="url(#crescent)"/>
+  <circle cx="284" cy="150" r="84" fill="url(#gold)" mask="url(#crescent)"/>
+  <path fill="url(#gold)" transform="translate(356 118) scale(1.25)"
+        d="M0 -22 L6.5 -7 L22 -6.8 L10 3.5 L13.6 19 L0 10.6 L-13.6 19 L-10 3.5 L-22 -6.8 L-6.5 -7 Z"/>
+
+  <!-- mosque -->
+  <g fill="url(#stone)">
+    <!-- minarets -->
+    <rect x="104" y="262" width="30" height="158" rx="4"/>
+    <path d="M100 266 L119 214 L138 266 Z"/>
+    <rect x="98" y="300" width="42" height="10" rx="3"/>
+    <rect x="378" y="262" width="30" height="158" rx="4"/>
+    <path d="M374 266 L393 214 L412 266 Z"/>
+    <rect x="372" y="300" width="42" height="10" rx="3"/>
+    <!-- dome and hall -->
+    <path d="M168 336 C168 280 206 250 256 236 C306 250 344 280 344 336 Z"/>
+    <rect x="252" y="206" width="8" height="34" rx="3"/>
+    <circle cx="256" cy="204" r="9"/>
+    <rect x="154" y="332" width="204" height="88" rx="6"/>
+  </g>
+  <!-- door and windows -->
+  <g fill="#0c4f50">
+    <path d="M234 420 L234 380 C234 364 246 354 256 350 C266 354 278 364 278 380 L278 420 Z"/>
+    <path d="M182 396 L182 368 C182 360 188 355 193 353 C198 355 204 360 204 368 L204 396 Z"/>
+    <path d="M308 396 L308 368 C308 360 314 355 319 353 C324 355 330 360 330 368 L330 396 Z"/>
+  </g>
+  <rect x="84" y="418" width="344" height="10" rx="5" fill="#ffffff" opacity="0.9"/>
+</svg>

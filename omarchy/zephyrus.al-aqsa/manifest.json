@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "zephyrus.al-aqsa",
+  "name": "Al-Aqsa Prayer Times",
+  "version": "1.1.0",
+  "author": "zephyrus",
+  "description": "Next prayer and countdown from the Al-Aqsa app, with today's times and your check-offs.",
+  "kinds": [
+    "service",
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Al-Aqsa Prayer Times",
+    "description": "Countdown to the next prayer. Left click opens Al-Aqsa, right click checks off the current prayer.",
+    "category": "Time",
+    "allowMultiple": false,
+    "defaultSection": "center"
+  }
+}

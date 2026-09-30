@@ -1,0 +1,235 @@
+Screen {
+    layout: vertical;
+}
+
+/* btop-style panels: rounded border with the title in it */
+.panel {
+    border: round $primary 45%;
+    border-title-color: $primary;
+    border-title-style: bold;
+    border-subtitle-color: $text-muted;
+    padding: 0 1;
+}
+
+.panel:focus-within {
+    border: round $primary;
+}
+
+#header {
+    height: auto;
+    padding: 0 1;
+    background: $panel;
+}
+
+#body {
+    layout: horizontal;
+    height: 1fr;
+    padding: 0 1;
+}
+
+#left {
+    width: 3fr;
+    height: 100%;
+}
+
+#right {
+    width: 2fr;
+    min-width: 50;
+    height: 100%;
+}
+
+/* next prayer */
+
+#next {
+    height: auto;
+    padding: 1 2;
+}
+
+#next-label, #hint {
+    width: 100%;
+    text-align: center;
+}
+
+#countdown {
+    width: 100%;
+    text-align: center;
+    color: $accent;
+    text-style: bold;
+}
+
+.viz {
+    width: 100%;
+}
+
+#viz-top {
+    margin-top: 1;
+}
+
+#progress {
+    width: 100%;
+    margin: 1 0;
+}
+
+#progress Bar {
+    width: 1fr;
+}
+
+#progress Bar > .bar--bar {
+    color: $accent;
+    background: $surface;
+}
+
+/* today's prayers */
+
+#today {
+    height: auto;
+}
+
+#week {
+    height: 1fr;
+    min-height: 11;
+    padding: 1 1;
+}
+
+#today.complete {
+    border-subtitle-color: $success;
+}
+
+#prayers {
+    height: auto;
+    background: transparent;
+    margin-top: 1;
+}
+
+#prayers > .datatable--header {
+    background: transparent;
+    color: $text-muted;
+    text-style: none;
+}
+
+#prayers > .datatable--cursor {
+    background: $primary 25%;
+}
+
+#prayers:focus > .datatable--cursor {
+    background: $primary 35%;
+}
+
+#day-note {
+    margin-top: 1;
+    padding: 0 1;
+}
+
+/* calendar and progress */
+
+#month {
+    height: auto;
+}
+
+#calendar {
+    width: 42;
+    height: auto;
+    margin-top: 1;
+}
+
+#legend {
+    width: 100%;
+    margin: 1 0 0 0;
+    text-align: center;
+}
+
+#stats {
+    height: 1fr;
+    min-height: 12;
+    padding: 1 2;
+}
+
+/* narrow windows: one scrolling column */
+
+MainScreen.narrow #body {
+    layout: vertical;
+    overflow-y: auto;
+}
+
+MainScreen.narrow #left, MainScreen.narrow #right {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+}
+
+MainScreen.narrow #week, MainScreen.narrow #stats {
+    height: auto;
+}
+
+/* pickers */
+
+PlaceScreen {
+    align: center top;
+}
+
+#picker {
+    width: 90;
+    max-width: 100%;
+    height: 1fr;
+    margin: 1 1 0 1;
+    padding: 1 2;
+}
+
+#search {
+    margin: 1 0;
+}
+
+#results {
+    height: 1fr;
+    border: none;
+    background: transparent;
+}
+
+#picker-status {
+    margin-top: 1;
+}
+
+ThemeScreen {
+    align: center middle;
+}
+
+#themes {
+    width: 50;
+    height: 80%;
+    background: $background;
+    padding: 1 1;
+}
+
+#theme-list {
+    height: 1fr;
+    border: none;
+    background: transparent;
+}
+
+LateLogScreen {
+    align: center middle;
+}
+
+#late-log {
+    width: 64;
+    max-width: 100%;
+    height: auto;
+    background: $background;
+    border: round $warning;
+    border-title-color: $warning;
+    padding: 1 2;
+}
+
+#late-detail {
+    margin-top: 1;
+}
+
+#late-buttons {
+    layout: horizontal;
+    height: auto;
+    margin-top: 1;
+}
+
+#late-buttons Button {
+    margin: 0 1;
+}
